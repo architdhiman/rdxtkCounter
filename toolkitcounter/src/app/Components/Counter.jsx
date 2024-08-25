@@ -8,9 +8,6 @@ const Counter = () => {
     const [amount, setAmount] = useState(initialAmount);
     const dispatch = useDispatch();
 
-    useEffect(() => {
-      setAmount(initialAmount);
-    }, [initialAmount]);
   
     return (
       <div>
@@ -20,7 +17,8 @@ const Counter = () => {
         {count} <br />
         <input
           type="text"
-          onChange={(e) => setAmount(Number(e.target.value))}
+          onChange={(e) => setAmount(Number(e.target.value))}  //if removed then only fixed value will remain written in below line
+          value={amount}
         />
         <button onClick={() => dispatch(increaseByAmount(amount))}>ADD</button>
       </div>
